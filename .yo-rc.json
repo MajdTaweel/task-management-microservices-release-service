@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.asaltech.taskmanagement.releaseservice"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "microservice",
+    "baseName": "releaseService",
+    "packageName": "com.asaltech.taskmanagement.releaseservice",
+    "packageFolder": "com/asaltech/taskmanagement/releaseservice",
+    "serverPort": "8001",
+    "authenticationType": "uaa",
+    "uaaBaseName": "authServer",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MGFmZTk1NGUwMWUzMjNhOWU0YmM3YmQ2OTM2NmQ0MzE2Y2Y3ODI5ZjkxNGNhMGQzMmZhMzg0Y2NkNmFlYzc2OWFlNTQxMWMwMTBmY2RkMTJmNzgxYmY1OGY0OGQ3ODZkY2Q2NmNhMWE3OWVkOGY4YTBlZjdlOGIxNmE0MjliODg=",
+    "embeddableLaunchScript": false,
+    "creationTimestamp": 1597832557714,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "clientPackageManager": "npm",
+    "blueprints": [],
+    "skipClient": true,
+    "skipUserManagement": true
+  }
+}

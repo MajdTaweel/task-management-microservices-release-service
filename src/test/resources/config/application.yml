@@ -1,0 +1,101 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration is used for unit/integration tests.
+#
+# More information on profiles: https://www.jhipster.tech/profiles/
+# More information on configuration properties: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+eureka:
+  client:
+    enabled: false
+  instance:
+    appname: releaseService
+    instanceId: releaseService:${spring.application.instance-id:${random.value}}
+
+spring:
+  application:
+    name: releaseService
+  jackson:
+    serialization:
+      write-durations-as-timestamps: false
+  data:
+    mongodb:
+      host: localhost
+      port: 0
+      database: releaseService
+  mail:
+    host: localhost
+  main:
+    allow-bean-definition-overriding: true
+  messages:
+    basename: i18n/messages
+  task:
+    execution:
+      thread-name-prefix: release-service-task-
+      pool:
+        core-size: 1
+        max-size: 50
+        queue-capacity: 10000
+    scheduling:
+      thread-name-prefix: release-service-scheduling-
+      pool:
+        size: 1
+  thymeleaf:
+    mode: HTML
+
+server:
+  port: 10344
+  address: localhost
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+jhipster:
+  clientApp:
+    name: 'releaseServiceApp'
+  logging:
+    # To test json console appender
+    use-json-format: false
+    logstash:
+      enabled: false
+      host: localhost
+      port: 5000
+      queue-size: 512
+  security:
+    authentication:
+      jwt:
+        # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
+        base64-secret: MGFmZTk1NGUwMWUzMjNhOWU0YmM3YmQ2OTM2NmQ0MzE2Y2Y3ODI5ZjkxNGNhMGQzMmZhMzg0Y2NkNmFlYzc2OWFlNTQxMWMwMTBmY2RkMTJmNzgxYmY1OGY0OGQ3ODZkY2Q2NmNhMWE3OWVkOGY4YTBlZjdlOGIxNmE0MjliODg=
+        # Token is valid 24 hours
+        token-validity-in-seconds: 86400
+    client-authorization:
+      access-token-uri: http://authserver/oauth/token
+      token-service-id: authserver
+      client-id: internal
+      client-secret: internal
+  metrics:
+    logs: # Reports metrics in the logs
+      enabled: true
+      report-frequency: 60 # in seconds
+
+# ===================================================================
+# Application specific properties
+# Add your own application properties here, see the ApplicationProperties class
+# to have type-safe configuration, like in the JHipsterProperties above
+#
+# More documentation is available at:
+# https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# application:
