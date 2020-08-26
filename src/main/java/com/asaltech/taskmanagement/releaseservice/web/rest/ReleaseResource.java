@@ -1,5 +1,6 @@
 package com.asaltech.taskmanagement.releaseservice.web.rest;
 
+import com.asaltech.taskmanagement.releaseservice.security.AuthoritiesConstants;
 import com.asaltech.taskmanagement.releaseservice.service.ReleaseService;
 import com.asaltech.taskmanagement.releaseservice.service.dto.ReleaseDTO;
 import com.asaltech.taskmanagement.releaseservice.web.rest.errors.BadRequestAlertException;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -22,6 +24,7 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping("/api")
+@PreAuthorize("isAuthenticated()")
 public class ReleaseResource {
 
     private static final String ENTITY_NAME = "releaseServiceRelease";
@@ -42,6 +45,7 @@ public class ReleaseResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/releases")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.LEAD + "\")")
     public ResponseEntity<ReleaseDTO> createRelease(@Valid @RequestBody ReleaseDTO releaseDTO) throws URISyntaxException {
         log.debug("REST request to save Release : {}", releaseDTO);
         if (releaseDTO.getId() != null) {
@@ -63,6 +67,7 @@ public class ReleaseResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/releases")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.LEAD + "\")")
     public ResponseEntity<ReleaseDTO> updateRelease(@Valid @RequestBody ReleaseDTO releaseDTO) throws URISyntaxException {
         log.debug("REST request to update Release : {}", releaseDTO);
         if (releaseDTO.getId() == null) {
@@ -105,6 +110,7 @@ public class ReleaseResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/releases/{id}")
+    @PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.LEAD + "\")")
     public ResponseEntity<Void> deleteRelease(@PathVariable String id) {
         log.debug("REST request to delete Release : {}", id);
         releaseService.delete(id);
