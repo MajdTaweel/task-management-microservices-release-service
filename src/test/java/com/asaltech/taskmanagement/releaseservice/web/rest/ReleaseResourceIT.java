@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ReleaseServiceApp.class})
 @AutoConfigureMockMvc
-@WithMockUser
+@WithMockUser(authorities = {"ROLE_USER", "ROLE_TEAM_LEAD"})
 public class ReleaseResourceIT {
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
